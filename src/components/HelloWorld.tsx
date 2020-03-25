@@ -1,24 +1,31 @@
 import { Component, Prop } from 'vue-property-decorator'
 import * as tsx from 'vue-tsx-support'
 
+export interface TestObj {
+  test: string
+}
 export interface HelloWorldProps {
   msg: string
+  num: number
+  obj: TestObj
 }
 
 @Component({
   name: 'HelloWorld'
-  // props: {
-  //   msg: { type: String, required: true }
-  // },
-  // render(this: HelloWorld): Vue.VNode {
-  //   const { msg } = this.$props
-  //   return <div>{msg}</div>
-  // }
 })
 export default class HelloWorld extends tsx.Component<HelloWorldProps> {
-  @Prop({ type: String, required: true as true }) private msg!: string
+  @Prop() private msg!: string
+  @Prop() private num!: number
+  @Prop() private obj!: TestObj
+
   render(): Vue.VNode {
-    // const { msg } = this.$props
-    return <div>{this.msg}</div>
+    return (
+      <div>
+        <div>
+          {this.msg}: {this.num}
+        </div>
+        <div>{this.obj.test}</div>
+      </div>
+    )
   }
 }

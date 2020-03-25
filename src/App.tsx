@@ -1,4 +1,4 @@
-import { Component, Vue } from 'vue-property-decorator'
+import { Component } from 'vue-property-decorator'
 import HelloWorld from '@/components/HelloWorld'
 import * as tsx from 'vue-tsx-support'
 
@@ -13,7 +13,7 @@ export default class App extends tsx.Component<{}> {
   render(): Vue.VNode {
     return (
       <div>
-        <HelloWorld msg={this.test} />
+        <HelloWorld msg={this.test} num={1} obj={{ test: 'test' }} />
       </div>
     )
   }
