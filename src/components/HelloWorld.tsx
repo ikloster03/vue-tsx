@@ -1,5 +1,6 @@
 import { Component, Prop } from 'vue-property-decorator'
 import * as tsx from 'vue-tsx-support'
+import Wrapper from '@/components/Wrapper'
 
 export interface TestObj {
   test: string
@@ -11,7 +12,10 @@ export interface HelloWorldProps {
 }
 
 @Component({
-  name: 'HelloWorld'
+  name: 'HelloWorld',
+  components: {
+    Wrapper
+  }
 })
 export default class HelloWorld extends tsx.Component<HelloWorldProps> {
   @Prop() private msg!: string
@@ -20,12 +24,12 @@ export default class HelloWorld extends tsx.Component<HelloWorldProps> {
 
   render(): Vue.VNode {
     return (
-      <div>
+      <wrapper direction="column">
         <div>
           {this.msg}: {this.num}
         </div>
         <div>{this.obj.test}</div>
-      </div>
+      </wrapper>
     )
   }
 }
