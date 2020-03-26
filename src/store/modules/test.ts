@@ -9,8 +9,14 @@ export default class TestModule extends VuexModule {
   }
 
   @Action
-  public updateTest(test: string) {
-    this.context.commit('setTest', test)
+  public async updateTest(test: string) {
+    const newTest = await new Promise(resolve => {
+      setTimeout(() => {
+        resolve(test)
+      }, 5000)
+    })
+
+    this.context.commit('setTest', newTest)
   }
 
   @Mutation
